@@ -15,6 +15,9 @@
 
 		<mule.version>3.8.5</mule.version>
 		<mule.tools.version>1.7</mule.tools.version>
+		
+		<sonar.sources>.</sonar.sources>
+      		<sonar.inclusions>src/main/app/**</sonar.inclusions>
 	</properties>
 
 	<build>
