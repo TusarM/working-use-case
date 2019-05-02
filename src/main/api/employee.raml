@@ -1,0 +1,73 @@
+#%RAML 1.0
+title: Employee
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/77986251-4616-4f79-a581-28597ab37ef3/empapp # baseUri: http://localhost:8081/empapp
+/register-employee:
+  post:
+    body:
+      application/json:
+        example:
+          {
+            "Empid":1,
+            "Name":"Tusar",
+            "Location":"Hyderabad"
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "Status":"Successful"
+              }
+/delete-employee:
+  get:
+    queryParameters:
+      empid:
+        displayName: empid
+        description: Employee Id
+        type: number
+        example: 28
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "status":"200",
+                "message":"successful"
+              }
+/update-employee:
+  post:
+    body:
+      application/json:
+        example:
+          {
+            "Empid":1,
+            "Name":"Tusar",
+            "Location":"Hyderabad"
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "status":"200",
+                "message":"ok"
+              }
+/fetch-employee:
+  /{employeeID}:
+    description: Return employee informantion based on employee id.
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {
+                  "Empid":1,
+                  "Name":"Tusar",
+                  "Location":"Hyderabad"
+                }
+    
+      

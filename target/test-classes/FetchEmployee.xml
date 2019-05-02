@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:validation="http://www.mulesoft.org/schema/mule/validation"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<flow name="get:/fetch-employee/{employeeID}:employee-config">
+        <logger message="Started the fetch employee flow. The following parameters are recived. #[message.inboundProperties.'http.uri.params'.employeeID]" level="INFO" doc:name="Logger"/>
+        <validation:all doc:name="Validation">
+            <validation:validations>
+                <validation:is-not-null value="#[message.inboundProperties.'http.uri.params'.employeeID]" message="Employee id should not be null"/>
+            </validation:validations>
+        </validation:all>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[select * from emp where empid=#[message.inboundProperties.'http.uri.params'.employeeID]]]></db:parameterized-query>
+        </db:select>
+        <logger message="Operation completed successfully. " level="INFO" doc:name="Logger"/>
+        <choice-exception-strategy doc:name="Choice Exception Strategy">
+            <catch-exception-strategy when="#[exception.causedBy(org.mule.extension.validation.api.MultipleValidationException)]" doc:name="Catch Exception Strategy">
+                <logger message="The required validations have not been fulfilled." level="INFO" doc:name="Logger"/>
+            </catch-exception-strategy>
+        </choice-exception-strategy>
+	</flow>
+</mule>

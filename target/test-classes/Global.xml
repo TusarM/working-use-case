@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.8.5"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd 
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<http:listener-config name="employee-httpListenerConfig"
+		host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration" />
+	<apikit:config name="employee-config" raml="employee.raml"
+		consoleEnabled="false" doc:name="Router" keepRamlBaseUri="false">
+		<apikit:flow-mapping resource="/register-employee"
+			action="post" content-type="application/json" flow-ref="post:/register-employee:employee-config" />
+		<apikit:flow-mapping resource="/delete-employee"
+			action="get" flow-ref="get:/delete-employee:employee-config" />
+		<apikit:flow-mapping resource="/update-employee"
+			action="post" content-type="application/json" flow-ref="post:/update-employee:employee-config" />
+		<apikit:flow-mapping resource="/fetch-employee/{employeeID}"
+			action="get" flow-ref="get:/fetch-employee/{employeeID}:employee-config" />
+	</apikit:config>
+	 <db:mysql-config name="MySQL_Configuration" host="localhost" port="3306" user="tusar" password="xyz@123" database="test" doc:name="MySQL Configuration">
+        <db:pooling-profile maxPoolSize="3" minPoolSize="1"/>
+    </db:mysql-config>
+</mule>

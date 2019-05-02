@@ -1,0 +1,26 @@
+<classpath>
+  <classpathentry kind="src" path="src/main/api" excluding="**/*.java"/>
+  <classpathentry kind="src" path="src/main/app" excluding="**/*.java"/>
+  <classpathentry kind="src" path="src/main/java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="src" path="src/test/java" output="target/test-classes"/>
+  <classpathentry kind="src" path="src/test/resources" output="target/test-classes" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/org/typelevel/algebra_2.12/0.7.0/algebra_2.12-0.7.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/typelevel/cats-kernel_2.12/0.9.0/cats-kernel_2.12-0.9.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/mule/edi/edi-parser/2.2.2/edi-parser-2.2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/mule/edi/ltm-datamodel/2.2.2/ltm-datamodel-2.2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/typelevel/machinist_2.12/0.6.1/machinist_2.12-0.6.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/8.0.14/mysql-connector-java-8.0.14.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-compiler/2.12.4/scala-compiler-2.12.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-library/2.12.4/scala-library-2.12.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/modules/scala-parser-combinators_2.12/1.0.4/scala-parser-combinators_2.12-1.0.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-reflect/2.12.0/scala-reflect-2.12.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/modules/scala-xml_2.12/1.0.5/scala-xml_2.12-1.0.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/typelevel/spire-macros_2.12/0.14.1/spire-macros_2.12-0.14.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/typelevel/spire_2.12/0.14.1/spire_2.12-0.14.1.jar"/>
+  <classpathentry kind="con" path="MULE_RUNTIME"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+</classpath>
